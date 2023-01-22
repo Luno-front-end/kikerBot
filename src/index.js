@@ -35,8 +35,9 @@ bot.onText(/\/start/, async (msg) => {
             newBot.kickChatMember(chatId, user.user_id);
           }
         });
-      }, 10800000);
+      }, 1500000);
     }
+    // 10800000;
   } catch (error) {
     console.error(error);
   }
