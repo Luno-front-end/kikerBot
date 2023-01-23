@@ -31,6 +31,7 @@ const deletePostDate = (userId, deleteDay) => {
     {
       $set: {
         deleteDate: deleteDay(),
+        "payment.order_status": "deleted",
       },
     },
     (err, result) => {
