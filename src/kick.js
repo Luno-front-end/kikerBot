@@ -20,6 +20,7 @@ bot.onText(/\/start/, async (msg) => {
     const userId = msg.from.id;
 
     // if (userId === 382298066) {
+    console.log(userId);
     await bot.sendMessage(chatId, "kiker bot запущений");
 
     setInterval(async () => {
