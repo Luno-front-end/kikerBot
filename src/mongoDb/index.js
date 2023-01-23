@@ -16,7 +16,6 @@ const connectDb = () => {
         if (err) {
           console.log("Connection error", err);
         }
-        console.log("Connected!");
       }
     );
   } catch (error) {

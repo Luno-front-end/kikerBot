@@ -19,27 +19,24 @@ bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
     const userId = msg.from.id;
 
-    // if (userId === 382298066) {
-    console.log(userId);
-    await bot.sendMessage(chatId, "kiker bot запущений");
+    if (userId === 382298066) {
+      await bot.sendMessage(chatId, "kiker bot запущений");
 
-    setInterval(async () => {
-      const dbUser = await DB.checkUserDate();
-      dbUser.forEach(async (user) => {
-        if (user.payment.dateEnd === null) {
-          return;
-        } else if (
-          user.payment.dateEnd === nextDay() &&
-          user.deleteDate === null
-        ) {
-          DB.deletePostDate(user.user_id, nextDay);
-          newBot.kickChatMember(chatId, user.user_id);
-        }
-      });
-    }, process.env.TIME_CHECK);
-    console.log("Check ok");
-    // }
-    // 10800000;
+      setInterval(async () => {
+        const dbUser = await DB.checkUserDate();
+        dbUser.forEach(async (user) => {
+          if (user.payment.dateEnd === null) {
+            return;
+          } else if (
+            user.payment.dateEnd === nextDay() &&
+            user.deleteDate === null
+          ) {
+            DB.deletePostDate(user.user_id, nextDay);
+            newBot.kickChatMember(chatId, user.user_id);
+          }
+        });
+      }, process.env.TIME_CHECK);
+    }
   } catch (error) {
     console.error(error);
   }
